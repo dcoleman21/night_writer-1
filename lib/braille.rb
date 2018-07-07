@@ -36,7 +36,7 @@ class Braille
     split = message.chars
     split.map do |letter|
       braille_library[letter]
-    end.flatten
+    end
   end
 
 
