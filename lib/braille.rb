@@ -39,7 +39,4 @@ class Braille
     end
   end
 
-
-
-
 end
