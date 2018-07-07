@@ -10,7 +10,15 @@ class BrailleTest <  Minitest::Test
 
     assert_instance_of Braille, braille
 
- end
+  end
+
+  def test_it_can_translate_single_characters
+    braille = Braille.new
+
+    assert_equal     ,  braille.translate("h")
+
+  end
+
 
 
 
