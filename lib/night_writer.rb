@@ -14,4 +14,4 @@ writer.write(text)
 
 writer.close
 
-puts "created #{ARGV[1]} containing #{count} characters"
+puts "Created #{ARGV[1]} containing #{count} characters"
