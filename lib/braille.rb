@@ -38,6 +38,8 @@ class Braille
     split = split_characters(message)
     braille_array = translate_to_braille_array(split)
     first_line = line_one(braille_array)
+    second_line = line_two(braille_array)
+    third_line = line_three(braille_array)
   end
 
   def split_characters(message)
@@ -51,7 +53,7 @@ class Braille
   end
 
   def line_one(braille_array)
-    translate_to_braille.reduce("") do |result, braille_letter|
+    braille_array.reduce("") do |result, braille_letter|
       result << braille_letter[0]
     end
   end
