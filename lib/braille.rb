@@ -53,8 +53,8 @@ class Braille
   end
 
   def line_one(braille_array)
-    braille_array.reduce("") do |result, braille_letter|
-      result << braille_letter[0]
-    end
+    braille_array.map do |letter|
+      letter[0]
+    end.join
   end
 end
