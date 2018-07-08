@@ -1,5 +1,7 @@
 class Braille
 
+  attr_reader   :braille_library
+
   def initialize
     @braille_library = {
       "a" => ["0.", "..", ".."],
@@ -33,10 +35,17 @@ class Braille
 
   def translate(message)
     braille_library = @braille_library
-    split = message.chars
+    split = split_characters(message)
+    braille_array = translate_to_braille_array(split)
+  end
+
+  def split_characters(message)
+    message.chars
+  end
+
+  def translate_to_braille_array(split)
     split.map do |letter|
       braille_library[letter]
     end
   end
-
 end

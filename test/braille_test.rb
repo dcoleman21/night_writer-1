@@ -11,6 +11,12 @@ class BrailleTest <  Minitest::Test
     assert_instance_of Braille, braille
   end
 
+  def test_it_can_split_a_message_to_single_characters
+    braille = Braille.new
+
+    assert_equal ["h", "i"], braille.split_characters("hi")
+  end
+
   def test_it_can_translate_single_characters
     braille = Braille.new
 
@@ -23,6 +29,6 @@ class BrailleTest <  Minitest::Test
     braille = Braille.new
 
     expected = [["0.", "00", ".."], ["0.", ".0", ".."], ["0.", "0.", "0."], ["0.", "0.", "0."], ["0.", ".0", "0."]]
-    assert_equal expected,  braille.translate("hello")
+    assert_equal expected, braille.translate("hello")
   end
 end
