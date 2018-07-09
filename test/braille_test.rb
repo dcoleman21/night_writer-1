@@ -3,29 +3,29 @@ require 'minitest/pride'
 require './lib/braille'
 require 'pry'
 
-class BrailleTest <  Minitest::Test
+class BrailleConverterTest <  Minitest::Test
 
   def test_it_exists
-    braille = Braille.new
+    braille = BrailleConverter.new
 
-    assert_instance_of Braille, braille
+    assert_instance_of BrailleConverter, braille
   end
 
   def test_it_can_split_a_message_to_single_characters
-    braille = Braille.new
+    braille = BrailleConverter.new
 
     assert_equal ["h", "i"], braille.split_characters("hi")
   end
 
   def test_it_can_translate_single_characters
-    braille = Braille.new
+    braille = BrailleConverter.new
 
     assert_equal [["0.", "00", ".."]],  braille.translate_to_braille_array(["h"])
     assert_equal [["0.", ".0", "00"]],  braille.translate_to_braille_array(["z"])
   end
 
   def test_it_can_translate_multiple_characters
-    braille = Braille.new
+    braille = BrailleConverter.new
 
     actual_1 = ["h", "i"]
     actual_2 = ["h", "e", "l", "l", "o"]
@@ -39,7 +39,7 @@ class BrailleTest <  Minitest::Test
 
 
   def test_it_can_transpose
-    braille = Braille.new
+    braille = BrailleConverter.new
 
     actual = [["0.", "00", ".."], ["0.", ".0", ".."], ["0.", "0.", "0."], ["0.", "0.", "0."], ["0.", ".0", "0."]]
 
@@ -48,4 +48,14 @@ class BrailleTest <  Minitest::Test
 
     assert_equal expected, braille.transpose(actual)
   end
+
+  # def test_it_can_break_at_eighty_characters
+  #   braille = BrailleConverter.new
+  #
+  #   actual = [["0.", "0.", "0.", ]]
+  #
+  #   expected =
+  #
+  #   assert_equal expected, braille.output_to_braille
+  # end
 end

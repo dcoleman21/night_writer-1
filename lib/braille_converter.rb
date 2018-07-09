@@ -1,4 +1,4 @@
-class Braille
+class BrailleConverter
 
   attr_reader   :braille_library,
                 :output_text
@@ -40,6 +40,7 @@ class Braille
     split = split_characters(message)
     braille_array = translate_to_braille_array(split)
     transposed = transpose(braille_array)
+    output_to_braille(transposed)
   end
 
   def split_characters(message)
@@ -53,11 +54,13 @@ class Braille
   end
 
   def transpose(braille_array)
-
     braille_array.transpose
-
   end
 
-
-
+  def output_to_braille(actual)
+    line_one = transposed[0].join
+    line_two = transposed[1].join
+    line_three = transposed[2].join
+    "#{line_one[0, 80]}\n""#{line_two[0, 80]}\n""#{line_three[0, 80]}\n""#{line_one[81, 161]}\n""#{line_two[81, 161]}\n""#{line_three[81, 161]}"
+  end
 end
