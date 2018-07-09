@@ -1,8 +1,10 @@
 class Braille
 
-  attr_reader   :braille_library
+  attr_reader   :braille_library,
+                :output_text
 
   def initialize
+    @output_text = []
     @braille_library = {
       "a" => ["0.", "..", ".."],
       "b" => ["0.", "0.", ".."],
@@ -40,7 +42,6 @@ class Braille
     first = line_one(braille_array)
     second = line_two(braille_array)
     third = line_three(braille_array)
-    three_lines(first, second, third)
   end
 
   def split_characters(message)
@@ -54,29 +55,26 @@ class Braille
   end
 
   def line_one(braille_array)
-    braille_array.map do |letter|
-      letter[0]
-    end.join
+    first_line = []
+    braille_array.each do |letter|
+      first_line << letter[0]
+    end
+    @output_text << first_line
   end
 
   def line_two(braille_array)
-    braille_array.map do |letter|
-      letter[1]
-    end.join
+    second_line = []
+    braille_array.each do |letter|
+      second_line << letter[1]
+    end
+    @output_text << second_line
   end
 
   def line_three(braille_array)
-    braille_array.map do |letter|
-      letter[2]
-    end.join
-  end
-
-  def three_lines(first, second, third)
-    "#{first}\n #{second}\n #{third}"
-  end
-
-  def eighty_character_limit
-
-
+    third_line = []
+    braille_array.each do |letter|
+      third_line << letter[2]
+    end
+    @output_text << third_line
   end
 end
