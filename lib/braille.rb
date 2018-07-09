@@ -39,9 +39,7 @@ class Braille
     braille_library = @braille_library
     split = split_characters(message)
     braille_array = translate_to_braille_array(split)
-    first = line_one(braille_array)
-    second = line_two(braille_array)
-    third = line_three(braille_array)
+    transposed = transpose(braille_array)
   end
 
   def split_characters(message)
@@ -54,27 +52,12 @@ class Braille
     end
   end
 
-  def line_one(braille_array)
-    first_line = []
-    braille_array.each do |letter|
-      first_line << letter[0]
-    end
-    @output_text << first_line
+  def transpose(braille_array)
+
+    braille_array.transpose
+
   end
 
-  def line_two(braille_array)
-    second_line = []
-    braille_array.each do |letter|
-      second_line << letter[1]
-    end
-    @output_text << second_line
-  end
 
-  def line_three(braille_array)
-    third_line = []
-    braille_array.each do |letter|
-      third_line << letter[2]
-    end
-    @output_text << third_line
-  end
+
 end

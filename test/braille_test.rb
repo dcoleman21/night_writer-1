@@ -37,47 +37,15 @@ class BrailleTest <  Minitest::Test
     assert_equal expected_2, braille.translate_to_braille_array(actual_2)
   end
 
-  def test_it_can_shovel_to_line_one
-    braille = Braille.new
 
-    actual_1 = [["0.", "00", ".."], ["0.", ".0", ".."], ["0.", "0.", "0."], ["0.", "0.", "0."], ["0.", ".0", "0."]]
-
-    expected_1 = [["0.", "0.", "0.", "0.", "0."]]
-
-    assert_equal expected_1, braille.line_one(actual_1)
-  end
-  #
-  def test_it_can_shovel_to_line_two
-    braille = Braille.new
-
-    actual_1 = [["0.", "00", ".."], ["0.", ".0", ".."], ["0.", "0.", "0."], ["0.", "0.", "0."], ["0.", ".0", "0."]]
-
-    expected_1 = [["00", ".0", "0.", "0.", ".0"]]
-
-    assert_equal expected_1, braille.line_two(actual_1)
-  end
-  #
-  def test_it_can_shovel_to_line_three
-    braille = Braille.new
-
-    actual_1 = [["0.", "00", ".."], ["0.", ".0", ".."], ["0.", "0.", "0."], ["0.", "0.", "0."], ["0.", ".0", "0."]]
-
-    expected_1 = [["..", "..", "0.", "0.", "0."]]
-
-    assert_equal expected_1, braille.line_three(actual_1)
-  end
-
-  def test_output_text_returns_nested_array
+  def test_it_can_transpose
     braille = Braille.new
 
     actual = [["0.", "00", ".."], ["0.", ".0", ".."], ["0.", "0.", "0."], ["0.", "0.", "0."], ["0.", ".0", "0."]]
 
-    braille.line_one(actual)
-    braille.line_two(actual)
-    braille.line_three(actual)
 
     expected = [["0.", "0.", "0.", "0.", "0."], ["00", ".0", "0.", "0.", ".0"], ["..", "..", "0.", "0.", "0."]]
 
-    assert_equal expected, braille.output_text
+    assert_equal expected, braille.transpose(actual)
   end
 end
