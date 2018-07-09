@@ -87,10 +87,10 @@ class BrailleTest <  Minitest::Test
 
     assert_equal expected_1, braille.three_lines(actual_1, actual_2, actual_3)
   end
-  # 
-  # def test_it_can_limit_to_eighty_characters_on_one_line
-  #   braille = Braille.new
-  #
-  #
-  # end
+
+  def test_it_can_limit_to_eighty_characters_on_one_line
+    braille = Braille.new
+
+    assert_equal 
+  end
 end

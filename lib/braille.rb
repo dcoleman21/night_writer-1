@@ -74,4 +74,9 @@ class Braille
   def three_lines(first, second, third)
     "#{first}\n #{second}\n #{third}"
   end
+
+  def eighty_character_limit
+
+
+  end
 end
