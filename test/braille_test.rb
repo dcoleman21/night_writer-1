@@ -49,4 +49,30 @@ class BrailleTest <  Minitest::Test
     assert_equal expected_1, braille.line_one(actual_1)
     assert_equal expected_2, braille.line_one(actual_2)
   end
+
+  def test_it_can_shovel_to_line_two
+    braille = Braille.new
+
+    actual_1 = [["0.", "00", ".."], [".0", "0.", ".."]]
+    actual_2 = [["0.", "00", ".."], ["0.", ".0", ".."], ["0.", "0.", "0."], ["0.", "0.", "0."], ["0.", ".0", "0."]]
+
+    expected_1 = "000."
+    expected_2 = "00.00.0..0"
+
+    assert_equal expected_1, braille.line_two(actual_1)
+    assert_equal expected_2, braille.line_two(actual_2)
+  end
+
+  def test_it_can_shovel_to_line_three
+    braille = Braille.new
+
+    actual_1 = [["0.", "00", ".."], [".0", "0.", ".."]]
+    actual_2 = [["0.", "00", ".."], ["0.", ".0", ".."], ["0.", "0.", "0."], ["0.", "0.", "0."], ["0.", ".0", "0."]]
+
+    expected_1 = "...."
+    expected_2 = "....0.0.0."
+
+    assert_equal expected_1, braille.line_three(actual_1)
+    assert_equal expected_2, braille.line_three(actual_2)
+  end
 end

@@ -57,4 +57,16 @@ class Braille
       letter[0]
     end.join
   end
+
+  def line_two(braille_array)
+    braille_array.map do |letter|
+      letter[1]
+    end.join
+  end
+
+  def line_three(braille_array)
+    braille_array.map do |letter|
+      letter[2]
+    end.join
+  end
 end
