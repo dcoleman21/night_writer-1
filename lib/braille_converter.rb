@@ -73,13 +73,23 @@ class BrailleConverter
   end
 
   def format_long_lines(strings)
-    extra_lines = []
-    new_strings = strings.map do |line|
-      extra_lines << line[80..-1]
-      line[0..79]
+    chunks = chunks_of_eighty(strings)
+    transposed = transpose(chunks)
+    flattened = flatten_chunks(transposed)
+    join_flattened_chunks(flattened)
+  end
+
+  def chunks_of_eighty(strings)
+    strings.map do |string|
+      string.scan(/.{1,80}/)
     end
-    first_three = new_strings.join("\n")
-    second_three = extra_lines.join("\n")
-    first_three + "\n" + second_three
+  end
+
+  def flatten_chunks(chunks)
+    chunks.flatten
+  end
+
+  def join_flattened_chunks(flattened)
+    flattened.join("\n")
   end
 end
