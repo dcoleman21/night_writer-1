@@ -1,7 +1,6 @@
 class BrailleConverter
 
-  attr_reader   :braille_library,
-                :output_text
+  attr_reader   :output_text
 
   def initialize
     @output_text = []
@@ -36,11 +35,11 @@ class BrailleConverter
   end
 
   def translate(message)
-    braille_library = @braille_library
     split = split_characters(message)
     braille_array = translate_to_braille_array(split)
     transposed = transpose(braille_array)
-    output_to_braille(transposed)
+    strings = create_strings(transposed)
+    format_lines(strings)
   end
 
   def split_characters(message)
@@ -49,18 +48,38 @@ class BrailleConverter
 
   def translate_to_braille_array(split)
     split.map do |letter|
-      braille_library[letter]
+      @braille_library[letter]
     end
   end
 
   def transpose(braille_array)
     braille_array.transpose
   end
-
-  def output_to_braille(actual)
-    line_one = transposed[0].join
-    line_two = transposed[1].join
-    line_three = transposed[2].join
-    "#{line_one[0, 80]}\n""#{line_two[0, 80]}\n""#{line_three[0, 80]}\n""#{line_one[81, 161]}\n""#{line_two[81, 161]}\n""#{line_three[81, 161]}"
+  #
+  def create_strings(transposed)
+    lines = []
+    transposed.each do |line|
+      lines << line.join
+    end
+    lines
   end
+
+  def format_lines(strings)
+    if strings[0].length > 80
+      format_long_lines
+    else
+      strings.join("\n")
+    end
+  end
+
+  def format_long_lines
+    extra_lines = []
+    strings.map do |line|
+      line[0..79]
+      extra_lines << line[80..-1]
+    end
+    strings += extra_lines
+    all_lines.join("\n")
+  end
+
 end

@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/braille'
+require './lib/braille_converter'
 require 'pry'
 
 class BrailleConverterTest <  Minitest::Test
@@ -49,13 +49,33 @@ class BrailleConverterTest <  Minitest::Test
     assert_equal expected, braille.transpose(actual)
   end
 
-  # def test_it_can_break_at_eighty_characters
-  #   braille = BrailleConverter.new
-  #
-  #   actual = [["0.", "0.", "0.", ]]
-  #
-  #   expected =
-  #
-  #   assert_equal expected, braille.output_to_braille
-  # end
+  def test_it_can_create_strings
+    braille = BrailleConverter.new
+
+    actual = [["0.", "0.", "0.", "0.", "0."], ["00", ".0", "0.", "0.", ".0"], ["..", "..", "0.", "0.", "0."]]
+
+    expected = ["0.0.0.0.0.", "00.00.0..0", "....0.0.0."]
+
+    assert_equal expected, braille.create_strings(actual)
+  end
+
+  def test_it_can_format_lines_under_eighty
+    braille = BrailleConverter.new
+
+    actual = ["0.0.0.0.0.", "00.00.0..0", "....0.0.0."]
+
+    expected = "0.0.0.0.0.\n00.00.0..0\n....0.0.0."
+
+    assert_equal expected, braille.format_lines(actual)
+  end
+
+  def test_it_can_format_lines_over_eighty
+    braille = BrailleConverter.new
+
+    actual = ["0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.", "..................................................................................", ".................................................................................."]
+
+    expected = 0
+
+    assert_equal expected, braille.format_lines(actual)
+  end
 end
