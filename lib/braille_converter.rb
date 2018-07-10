@@ -66,20 +66,20 @@ class BrailleConverter
 
   def format_lines(strings)
     if strings[0].length > 80
-      format_long_lines
+      format_long_lines(strings)
     else
       strings.join("\n")
     end
   end
 
-  def format_long_lines
+  def format_long_lines(strings)
     extra_lines = []
     strings.map do |line|
       line[0..79]
       extra_lines << line[80..-1]
     end
     strings += extra_lines
-    all_lines.join("\n")
+    strings.join("\n")
   end
 
 end
