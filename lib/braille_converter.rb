@@ -55,7 +55,7 @@ class BrailleConverter
   def transpose(braille_array)
     braille_array.transpose
   end
-  #
+
   def create_strings(transposed)
     lines = []
     transposed.each do |line|
@@ -74,12 +74,12 @@ class BrailleConverter
 
   def format_long_lines(strings)
     extra_lines = []
-    strings.map do |line|
-      line[0..79]
+    new_strings = strings.map do |line|
       extra_lines << line[80..-1]
+      line[0..79]
     end
-    strings += extra_lines
-    strings.join("\n")
+    first_three = new_strings.join("\n")
+    second_three = extra_lines.join("\n")
+    first_three + "\n" + second_three
   end
-
 end

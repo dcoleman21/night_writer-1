@@ -1,7 +1,7 @@
 require_relative "./braille_converter"
 
 handle = File.open(ARGV[0], "r")
-incoming_text = handle.read
+incoming_text = handle.read.chomp
 handle.close
 
 braille = BrailleConverter.new
