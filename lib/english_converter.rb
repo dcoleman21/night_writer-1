@@ -10,18 +10,13 @@ class EnglishConverter
   end
 
   def translate(braille_message)
-    deleted = delete_new_line_characters(braille_message)
-    scanned = braille_scanner(deleted)
+    scanned = braille_scanner(braille_message)
     first = first_element(scanned)
     second = second_element(scanned)
     third = third_element(scanned)
     zipped = zip_elements(first, second, third)
     mapped = map_braille_array(zipped)
     join_characters(mapped)
-  end
-
-  def delete_new_line_characters(braille_message)
-    braille_message.delete("\n")
   end
 
   def braille_scanner(deleted)
@@ -54,6 +49,4 @@ class EnglishConverter
   def join_characters(mapped)
     mapped.join
   end
-
-
 end
