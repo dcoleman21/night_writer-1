@@ -11,12 +11,6 @@ class EnglishConverterTest <  Minitest::Test
     assert_instance_of EnglishConverter, english
   end
 
-  def test_it_can_delete_new_line_characters
-    english = EnglishConverter.new
-
-    assert_equal "0....." , english.delete_new_line_characters("0.\n..\n..")
-  end
-
   def test_it_can_break_strings_by_length
     english = EnglishConverter.new
 
@@ -100,6 +94,15 @@ class EnglishConverterTest <  Minitest::Test
     actual = english.join_characters(["a", "a"])
     expected = "aa"
     assert_equal expected, actual
+  end
+
+  def test_it_can_translate
+    english =  EnglishConverter.new
+
+    input = "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0....................................................................................................................................................................."
+    expected = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+
+    assert_equal expected, english.translate(input)
   end
 
 end
