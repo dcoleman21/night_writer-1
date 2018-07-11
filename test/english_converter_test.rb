@@ -25,13 +25,36 @@ class EnglishConverterTest <  Minitest::Test
     assert_equal ["0.0.0.", "......", "......",], english.braille_scanner("0.0.0.............")
   end
 
-  def test_It_can_make_elements_into_arrays
+  def test_it_can_grab_first_element
     english = EnglishConverter.new
 
     expected = ["0."]
 
     input = ["0.", "..", ".."]
 
-    assert_equal expected, english.first_elements(input)
+    assert_equal expected, english.first_element(input)
   end
+
+  def test_it_can_grab_second_element
+    english = EnglishConverter.new
+
+    expected = [".."]
+
+    input = ["0.", "..", ".."]
+
+    assert_equal expected , english.second_element(input)
+  end
+
+  def test_it_can_grab_third_element
+    english = EnglishConverter.new
+
+    expected = [".."]
+
+    input = ["0.", "..", ".."]
+
+    assert_equal expected , english.third_element(input)
+  end
+
+
+
 end

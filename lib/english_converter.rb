@@ -23,7 +23,17 @@ class EnglishConverter
     deleted.scan(/.{1,#{string_length}}/)
   end
 
-  def first_elements(input)
+  def first_element(input)
     input.fetch(0).scan(/.{1,2}/)
   end
+
+  def second_element(input)
+    input.fetch(1).scan(/.{1,2}/)
+  end
+
+  def third_element(input)
+    input.fetch(2).scan(/.{1,2}/)
+  end
+
+
 end
