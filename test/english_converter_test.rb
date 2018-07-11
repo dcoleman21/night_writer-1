@@ -1,7 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/english_converter'
-require 'pry'
 
 class EnglishConverterTest <  Minitest::Test
 
@@ -30,8 +29,6 @@ class EnglishConverterTest <  Minitest::Test
 
     assert_equal expected_1, english.first_element(input_1)
     assert_equal expected_2, english.first_element(input_2)
-
-
   end
 
   def test_it_can_grab_second_element
@@ -55,14 +52,12 @@ class EnglishConverterTest <  Minitest::Test
   end
 
   def test_it_can_zip_a_single_letter
-
     english = EnglishConverter.new
     input_1 = ["0."]
     input_2 = [".."]
     input_3 = [".."]
 
     assert_equal [["0.", "..", ".."]] , english.zip_elements(input_1, input_2, input_3)
-
   end
 
   def test_it_can_zip_multiple_leters
@@ -104,5 +99,4 @@ class EnglishConverterTest <  Minitest::Test
 
     assert_equal expected, english.translate(input)
   end
-
 end

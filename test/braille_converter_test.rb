@@ -124,4 +124,16 @@ class BrailleConverterTest <  Minitest::Test
 
     assert_equal output, actual
   end
+
+  def test_it_can_translate
+    skip
+    braille = BrailleConverter.new
+
+    input = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+
+    expected = 0
+    # "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.\n0.\n................................................................................\n..\n................................................................................\n.."
+
+    assert_equal expected, braille.translate(input)
+  end
 end
