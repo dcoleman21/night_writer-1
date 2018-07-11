@@ -83,10 +83,16 @@ class EnglishConverterTest <  Minitest::Test
 
   def test_it_can_translate_signle_characters
     english = EnglishConverter.new
-    actual = english.map_braille_array ([["0.", "..", ".."]])
+    actual = english.map_braille_array([["0.", "..", ".."]])
     expected = ["a"]
     assert_equal expected, actual
   end
 
+  def test_it_can_map_multiple_characters
+    english =  EnglishConverter.new
+    actual = english.map_braille_array([["0.", "..", ".."], ["0.", "..", ".."]])
+    expected = ["a", "a"]
+    assert_equal expected , actual
+  end
 
 end
