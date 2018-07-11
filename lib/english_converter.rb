@@ -16,7 +16,8 @@ class EnglishConverter
     second = second_element(scanned)
     third = third_element(scanned)
     zipped = zip_elements(first, second, third)
-
+    mapped = map_braille_array(zipped)
+    join_characters(mapped)
   end
 
   def delete_new_line_characters(braille_message)
@@ -48,6 +49,10 @@ class EnglishConverter
     zipped.map do |letter|
       @english_library[letter]
     end
+  end
+
+  def join_characters(mapped)
+    mapped.join
   end
 
 

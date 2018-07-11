@@ -95,4 +95,11 @@ class EnglishConverterTest <  Minitest::Test
     assert_equal expected , actual
   end
 
+  def test_it_can_join_characters
+    english =  EnglishConverter.new
+    actual = english.join_characters(["a", "a"])
+    expected = "aa"
+    assert_equal expected, actual
+  end
+
 end
