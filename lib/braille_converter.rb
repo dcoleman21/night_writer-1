@@ -1,9 +1,9 @@
 class BrailleConverter
 
-  attr_reader   :output_text
+  attr_reader   :braille_library
 
   def initialize
-    @output_text = []
+
     @braille_library = {
       "a" => ["0.", "..", ".."],
       "b" => ["0.", "0.", ".."],
