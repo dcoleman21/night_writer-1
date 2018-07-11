@@ -12,6 +12,10 @@ class EnglishConverter
   def translate(braille_message)
     deleted = delete_new_line_characters(braille_message)
     scanned = braille_scanner(deleted)
+    first = first_element(scanned)
+    second = second_element(scanned)
+    third = third_element(scanned)
+
   end
 
   def delete_new_line_characters(braille_message)
@@ -23,16 +27,20 @@ class EnglishConverter
     deleted.scan(/.{1,#{string_length}}/)
   end
 
-  def first_element(input)
-    input.fetch(0).scan(/.{1,2}/)
+  def first_element(scanned)
+    scanned.fetch(0).scan(/.{1,2}/)
   end
 
-  def second_element(input)
-    input.fetch(1).scan(/.{1,2}/)
+  def second_element(scanned)
+    scanned.fetch(1).scan(/.{1,2}/)
   end
 
-  def third_element(input)
-    input.fetch(2).scan(/.{1,2}/)
+  def third_element(scanned)
+    scanned.fetch(2).scan(/.{1,2}/)
+  end
+
+  def zip_elements(first, second, third)
+    first.zip(second, third)
   end
 
 
