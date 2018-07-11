@@ -71,7 +71,7 @@ class EnglishConverterTest <  Minitest::Test
 
   end
 
-  def test_it_Can_zip_multiple_leters
+  def test_it_can_zip_multiple_leters
     english = EnglishConverter.new
     input_1 = ["0.", "0."]
     input_2 = ["..", ".."]
@@ -79,6 +79,13 @@ class EnglishConverterTest <  Minitest::Test
     expected = [["0.", "..", ".."], ["0.", "..", ".."]]
 
     assert_equal expected ,  english.zip_elements(input_1, input_2, input_3)
+  end
+
+  def test_it_can_translate_signle_characters
+    english = EnglishConverter.new
+    actual = english.map_braille_array ([["0.", "..", ".."]])
+    expected = ["a"]
+    assert_equal expected, actual
   end
 
 

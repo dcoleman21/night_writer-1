@@ -15,6 +15,7 @@ class EnglishConverter
     first = first_element(scanned)
     second = second_element(scanned)
     third = third_element(scanned)
+    zipped = zip_elements(first, second, third)
 
   end
 
@@ -41,6 +42,12 @@ class EnglishConverter
 
   def zip_elements(first, second, third)
     first.zip(second, third)
+  end
+
+  def map_braille_array(zipped)
+    zipped.map do |letter|
+      @english_library[letter]
+    end
   end
 
 
